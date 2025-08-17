@@ -35,9 +35,7 @@ const Header = ({ titlePre = '' }) => {
           <li key={label}>
             {page ? (
               <Link href={page}>
-                <a className={pathname === page ? 'active' : undefined}>
                   {label}
-                </a>
               </Link>
             ) : (
               <ExtLink href={link}>{label}</ExtLink>

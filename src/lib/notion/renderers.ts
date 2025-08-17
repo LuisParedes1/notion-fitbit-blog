@@ -1,5 +1,5 @@
 import React from 'react'
-import components from '../../components/dynamic'
+import {string_component} from '../../components/dynamic'
 
 function applyTags(tags = [], children, noPTag = false, key) {
   let child = children
@@ -18,12 +18,12 @@ function applyTags(tags = [], children, noPTag = false, key) {
       props.href = tag[1]
     }
     if (tagName === 'e') {
-      tagName = components.Equation
+      tagName = string_component.Equation
       props.displayMode = false
       child = tag[1]
     }
 
-    child = React.createElement(components[tagName] || tagName, props, child)
+    child = React.createElement(string_component[tagName] || tagName, props, child)
   }
   return child
 }
@@ -41,7 +41,7 @@ export function textBlock(text = [], noPTag = false, mainKey) {
     children.push(applyTags(textItem[1], textItem[0], noPTag, key))
   }
   return React.createElement(
-    noPTag ? React.Fragment : components.p,
+    noPTag ? React.Fragment : string_component.p,
     { key: mainKey },
     ...children,
     noPTag

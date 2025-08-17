@@ -3,8 +3,8 @@ import fetch from 'node-fetch'
 import { useRouter } from 'next/router'
 import Header from '../../components/header'
 import Heading from '../../components/heading'
-import components from '../../components/dynamic'
-import ReactJSXParser from '@zeit/react-jsx-parser'
+import  {JSX_component, string_component} from '../../components/dynamic'
+import JsxParser from 'react-jsx-parser'
 import blogStyles from '../../styles/blog.module.css'
 import { textBlock } from '../../lib/notion/renderers'
 import getPageData from '../../lib/notion/getPageData'
@@ -173,13 +173,13 @@ const RenderPost = ({ post, redirect, preview }) => {
           let toRender = []
 
           if (isList) {
-            listTagName = components[type === 'bulleted_list' ? 'ul' : 'ol']
+            listTagName = string_component[type === 'bulleted_list' ? 'ul' : 'ol']
             listLastId = `list${id}`
 
             listMap[id] = {
               key: id,
               nested: [],
-              children: textBlock(properties.title, true, id),
+              children: [textBlock(properties.title, true, id)],
             }
 
             if (listMap[parent_id]) {
@@ -198,12 +198,12 @@ const RenderPost = ({ post, redirect, preview }) => {
 
                   const createEl = (item) =>
                     React.createElement(
-                      components.li || 'ul',
+                      string_component.li || 'ul',
                       { key: item.key },
                       item.children,
                       item.nested.length > 0
                         ? React.createElement(
-                            components.ul || 'ul',
+                            string_component.ul || 'ul',
                             { key: item + 'sub-list' },
                             item.nested.map((nestedId) =>
                               createEl(listMap[nestedId])
@@ -398,21 +398,21 @@ const RenderPost = ({ post, redirect, preview }) => {
                 if (language === 'LiveScript') {
                   // this requires the DOM for now
                   toRender.push(
-                    <ReactJSXParser
+                    <JsxParser
                       key={id}
                       jsx={content}
-                      components={components}
+                      components={JSX_component}
                       componentsOnly={false}
-                      renderInpost={false}
+                      // renderInpost={false}
                       allowUnknownElements={true}
                       blacklistedTags={['script', 'style']}
                     />
                   )
                 } else {
                   toRender.push(
-                    <components.Code key={id} language={language || ''}>
+                    <string_component.Code key={id} language={language || ''}>
                       {content}
-                    </components.Code>
+                    </string_component.Code>
                   )
                 }
               }
@@ -422,7 +422,7 @@ const RenderPost = ({ post, redirect, preview }) => {
               if (properties.title) {
                 toRender.push(
                   React.createElement(
-                    components.blockquote,
+                    string_component.blockquote,
                     { key: id },
                     properties.title
                   )
@@ -458,9 +458,9 @@ const RenderPost = ({ post, redirect, preview }) => {
               if (properties && properties.title) {
                 const content = properties.title[0][0]
                 toRender.push(
-                  <components.Equation key={id} displayMode={true}>
+                  <string_component.Equation key={id} displayMode={true}>
                     {content}
-                  </components.Equation>
+                  </string_component.Equation>
                 )
               }
               break
