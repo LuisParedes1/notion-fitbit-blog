@@ -13,32 +13,12 @@ const features = [
     icon: Lightning,
   },
   {
-    text: 'JAMstack based',
-    icon: Jamstack,
-  },
-  {
     text: 'Always available',
     icon: Wifi,
   },
   {
     text: 'Customizable',
     icon: Edit,
-  },
-  {
-    text: 'Incremental SSG',
-    icon: Plus,
-  },
-  {
-    text: 'MIT Licensed',
-    icon: Scroll,
-  },
-  {
-    text: 'Edit via Notion',
-    icon: Notion,
-  },
-  {
-    text: 'Great scores',
-    icon: Lighthouse,
   },
 ]
 
