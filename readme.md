@@ -5,24 +5,7 @@ This is a simple blog site to have a quick reference when developing clockfaces 
 I'm using [notion-blog](https://github.com/ijjk/notion-blog) template as a starting point but this uses Notion's private API instead of the [public API](https://developers.notion.com/reference/intro), which is not ideal.
 
 
-## Deploy Your Own
-
-Deploy your own Notion blog with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/ijjk/notion-blog/tree/main&project-name=notion-blog&repository-name=notion-blog)
-
-or
-
-1. Clone this repo `git clone https://github.com/ijjk/notion-blog.git`
-2. Configure project with [`vc`](https://vercel.com/download)
-3. Add your `NOTION_TOKEN` and `BLOG_INDEX_ID` as environment variables in [your project](https://vercel.com/docs/integrations?query=envir#project-level-apis/project-based-environment-variables). See [here](#getting-blog-index-and-token) for how to find these values
-4. Do final deployment with `vc`
-
-Note: if redeploying with `vc` locally and you haven't made any changes to the application's source and only edited in Notion you will need use `vc -f` to bypass build de-duping
-
-
-
-## Getting Blog Index and Token
+## Getting Blog Index `BLOG_INDEX_ID` and Notion Token `NOTION_TOKEN`
 
 To get your blog index value, open Notion and Navigate to the Notion page with the table you created above. While on this page you should be able to get the page id from either:
 
@@ -31,13 +14,6 @@ To get your blog index value, open Notion and Navigate to the Notion page with t
 
 To get your Notion token, open Notion and look for the `token_v2` cookie.
 
-## Creating Blog Posts
-
-1. In Notion click new on the table to add a new row
-2. Fill in the Page name, slug, Date, and Authors
-3. At the top of the content area add the content you want to show as a preview (keep this under 2 paragraphs)
-4. Add a divider block under your preview content
-5. Add the rest of your content under the divider block
 
 ## Running Locally
 
@@ -47,3 +23,11 @@ To run the project locally you need to follow steps 1 and 2 of [deploying](#depl
 2. Expose `NOTION_TOKEN` and `BLOG_INDEX_ID` in your environment `export NOTION_TOKEN='<your-token>'`and `export BLOG_INDEX_ID='<your-blog-index-id>'` or `set NOTION_TOKEN="<your-token>" && set BLOG_INDEX_ID="<your-blog-index-id>"` for Windows
 3. Run next in development mode `yarn dev`
 4. Build and run in production mode `yarn build && yarn start`
+
+## Creating Blog Posts
+
+1. In Notion click new on the table to add a new row
+2. Fill in the Page name, slug, Date, and Authors
+3. At the top of the content area add the content you want to show as a preview (keep this under 2 paragraphs)
+4. Add a divider block under your preview content
+5. Add the rest of your content under the divider block
