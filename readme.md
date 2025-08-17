@@ -1,14 +1,9 @@
-# Notion Blog
+# Fitbit Blog
 
-This is an example Next.js project that shows Next.js' upcoming SSG (static-site generation) support using Notion's **private** API for a backend.
+This is a simple blog site to have a quick reference when developing clockfaces and apps for my Fitbit Versa Lite smartwatch.
 
-**Note**: This example uses the experimental SSG hooks only available in the Next.js canary branch! The APIs used within this example will change over time. Since it is using a private API and experimental features, use at your own risk as these things could change at any moment.
+I'm using [notion-blog](https://github.com/ijjk/notion-blog) template as a starting point but this uses Notion's private API instead of the [public API](https://developers.notion.com/reference/intro), which is not ideal.
 
-**Live Example hosted on Vercel**: https://notion-blog.vercel.app/
-
-## Getting Started
-
-To view the steps to setup Notion to work with this example view the post at https://notion-blog.vercel.app/blog/my-first-post or follow the steps below.
 
 ## Deploy Your Own
 
@@ -25,32 +20,7 @@ or
 
 Note: if redeploying with `vc` locally and you haven't made any changes to the application's source and only edited in Notion you will need use `vc -f` to bypass build de-duping
 
-## Creating Your Pages Table
 
-**Note**: this is auto run if a table isn't detected the first time visiting `/blog`
-
-### Using the Pre-Configured Script
-
-1. Create a blank page in Notion
-2. Clone this repo `git clone https://github.com/ijjk/notion-blog.git`
-3. Install dependencies `cd notion-blog && yarn`
-4. Run script to create table `NOTION_TOKEN='token' BLOG_INDEX_ID='new-page-id' node scripts/create-table.js` See [here](#getting-blog-index-and-token) for finding the id for the new page
-
-### Manually Creating the Table
-
-1. Create a blank page in Notion
-2. Create a **inline** table on that page, don't use a full page table as it requires querying differently
-3. Add the below fields to the table
-
-The table should have the following properties:
-
-- `Page`: this the blog post's page
-- `Slug`: this is the blog post's slug relative to `/blog`, it should be a text property
-- `Published`: this filters blog posts in **production**, it should be a checkbox property
-- `Date`: this is when the blog post appears as posted, it should be a date property
-- `Authors`: this is a list of Notion users that wrote the post, it should be a person property
-
-![Example Blog Posts Table](./assets/table-view.png)
 
 ## Getting Blog Index and Token
 
@@ -77,9 +47,3 @@ To run the project locally you need to follow steps 1 and 2 of [deploying](#depl
 2. Expose `NOTION_TOKEN` and `BLOG_INDEX_ID` in your environment `export NOTION_TOKEN='<your-token>'`and `export BLOG_INDEX_ID='<your-blog-index-id>'` or `set NOTION_TOKEN="<your-token>" && set BLOG_INDEX_ID="<your-blog-index-id>"` for Windows
 3. Run next in development mode `yarn dev`
 4. Build and run in production mode `yarn build && yarn start`
-
-## Credits
-
-- Guillermo Rauch [@rauchg](https://twitter.com/rauchg) for the initial idea
-- Shu Ding [@shuding\_](https://twitter.com/shuding_) for the design help
-- Luis Alvarez [@luis_fades](https://twitter.com/luis_fades) for design help and bug catching
