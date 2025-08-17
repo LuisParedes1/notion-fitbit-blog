@@ -2,7 +2,7 @@ import { Sema } from 'async-sema'
 import rpc, { values } from './rpc'
 import getTableData from './getTableData'
 import { getPostPreview } from './getPostPreview'
-import { readFile, writeFile } from '../fs-helpers'
+import { readFile, writeFile } from '../../scripts/fs-helpers'
 import { BLOG_INDEX_ID, BLOG_INDEX_CACHE } from './server-constants'
 
 export default async function getBlogIndex(previews = true) {
