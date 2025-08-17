@@ -12,7 +12,7 @@ export default function Index() {
           src="/fitbit.jpg"
           height="85"
           width="250"
-          alt="Vercel + Notion"
+          alt="Fitbit Blog"
         />
         <h1>Fitbit Blog</h1>
         <h2>

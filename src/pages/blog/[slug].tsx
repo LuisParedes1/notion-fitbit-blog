@@ -47,7 +47,7 @@ export async function getStaticProps({ params: { slug }, preview }) {
         const res = await fetch(
           `https://api.twitter.com/1/statuses/oembed.json?id=${tweetId}`
         )
-        const json = await res.json()
+        const json: any = await res.json()
         properties.html = json.html.split('<script')[0]
         post.hasTweet = true
       } catch (_) {
@@ -220,13 +220,14 @@ const RenderPost = ({ post, redirect, preview }) => {
             listTagName = null
           }
 
-          const renderHeading = (Type: string | React.ComponentType) => {
-            toRender.push(
-              <Heading key={id}>
-                <Type key={id}>{textBlock(properties.title, true, id)}</Type>
-              </Heading>
-            )
-          }
+          const renderHeading = (Type: string | React.ElementType) => {
+              toRender.push(
+                <Heading key={id}>
+                  <Type>{textBlock(properties.title, true, id)}</Type>
+                </Heading>
+              );
+            };
+
 
           const renderBookmark = ({ link, title, description, format }) => {
             const { bookmark_icon: icon, bookmark_cover: cover } = format

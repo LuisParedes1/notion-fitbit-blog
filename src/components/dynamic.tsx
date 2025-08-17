@@ -3,8 +3,11 @@ import ExtLink from './ext-link'
 import React from 'react'
 
 // helper for passthrough native elements
-const passthrough = (Tag: keyof JSX.IntrinsicElements) =>
-  (props: React.HTMLAttributes<HTMLElement>) => <Tag {...props} />
+const passthrough =
+  (tag: keyof JSX.IntrinsicElements) =>
+  (props: any) =>
+    React.createElement(tag, props)
+
 
 const JSX_component = {
   // default tags

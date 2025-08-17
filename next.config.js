@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require('node:fs')
+const path = require('node:path')
 const {
   NOTION_TOKEN,
   BLOG_INDEX_ID,
@@ -44,17 +44,17 @@ if (!BLOG_INDEX_ID) {
 module.exports = {
   webpack(cfg, { dev, isServer }) {
     // only compile build-rss in production server build
-    if (dev || !isServer) return cfg
+  if (dev || !isServer) return cfg
 
     // we're in build mode so enable shared caching for Notion data
-    process.env.USE_CACHE = 'true'
+  process.env.USE_CACHE = 'true'
 
-    const originalEntry = cfg.entry
-    cfg.entry = async () => {
-      const entries = { ...(await originalEntry()) }
-      entries['build-rss.js'] = './src/lib/build-rss.ts'
-      return entries
-    }
-    return cfg
+  const originalEntry = cfg.entry
+  cfg.entry = async () => {
+    const entries = { ...(await originalEntry()) }
+    entries['build-rss.js'] = './src/lib/build-rss.ts'
+    return entries
+  }
+  return cfg
   },
 }
